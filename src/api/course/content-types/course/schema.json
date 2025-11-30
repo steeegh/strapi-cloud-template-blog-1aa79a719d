@@ -1,0 +1,51 @@
+{
+    "kind": "collectionType",
+    "collectionName": "courses",
+    "info": {
+        "singularName": "course",
+        "pluralName": "courses",
+        "displayName": "Course",
+        "description": "Online courses"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "title"
+        },
+        "price": {
+            "type": "decimal"
+        },
+        "description": {
+            "type": "text"
+        },
+        "cover": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos"
+            ]
+        },
+        "lessons": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::lesson.lesson",
+            "mappedBy": "course"
+        },
+        "students": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "plugin::users-permissions.user",
+            "mappedBy": "enrolledCourses"
+        }
+    }
+}

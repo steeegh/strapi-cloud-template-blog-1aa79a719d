@@ -1,0 +1,39 @@
+{
+    "kind": "collectionType",
+    "collectionName": "lessons",
+    "info": {
+        "singularName": "lesson",
+        "pluralName": "lessons",
+        "displayName": "Lesson",
+        "description": "Course lessons"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "title"
+        },
+        "videoUrl": {
+            "type": "string"
+        },
+        "content": {
+            "type": "richtext"
+        },
+        "isFreePreview": {
+            "type": "boolean",
+            "default": false
+        },
+        "course": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::course.course",
+            "inversedBy": "lessons"
+        }
+    }
+}
